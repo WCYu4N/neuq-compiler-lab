@@ -1,0 +1,15 @@
+# macOS metadata
+.DS_Store
+
+
+# Compiled executable and native build products
+lexer/lexer
+lexer/*.o
+lexer/*.dSYM/
+
+# Generated lexer output
+lexer/output.txt
+
+# Common temporary files
+*.swp
+*~
