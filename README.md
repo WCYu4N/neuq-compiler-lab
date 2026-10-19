@@ -25,3 +25,22 @@ MAINTK main
 LPARENT (
 RPARENT )
 ```
+
+## 实验二：语法分析
+
+实验二使用 Flex 和 Bison 将源程序直接连接到语法分析器：Flex 返回 token，Bison 按 SysY 语法进行分析并构建具体语法树。解析成功后，程序把 token 和规定的语法成分标签写入 `output.txt`。
+
+实现位于 [`lab02-语法分析`](lab02-语法分析)，详细说明见该目录下的 [README.md](lab02-语法分析/README.md)。当前实现使用 `parser-fixed.y` 和 `lexer.l`，`parser.y` 是早期文法草稿。
+
+在 macOS 上进入实验二目录并执行：
+
+```bash
+cd lab02-语法分析
+bison -Wall -d -v \
+  -o parser-fixed.tab.c parser-fixed.y
+flex -o lex.yy.c lexer.l
+cc -std=c11 -O2 parser-fixed.tab.c lex.yy.c -o parser
+./parser testfile.txt output.txt
+```
+
+其中，`bison -d` 会生成 Flex 编译所需的 `parser-fixed.tab.h`。如果提交平台只直接编译 `lex.yy.c` 和 `parser-fixed.tab.c`，还需要一并提交这个头文件。输入文件和输出文件也可以通过命令行参数指定；省略参数时默认使用 `testfile.txt` 和 `output.txt`。
