@@ -17,7 +17,7 @@ INTCON 1
 <PrimaryExp>
 <UnaryExp>
 <MulExp>
-<AddExp>
+<AddExp>j
 <ConstExp>
 <ConstInitVal>
 COMMA ,
